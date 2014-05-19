@@ -106,6 +106,7 @@
             me.browser = fanex.MultiSelect.helper.detectBrowser();
             me.isOpenning = false;
             me.checkShowGroup();
+            me.bodyId = 'fanex-multiselect-options-' + id;
             html.push(me.renderInterface(id, options.disabled, options.noneSelectedText));
             html.push('<div class="fanex-multiselect-options fanex-multiselect-treeview fanex-multiselect-shadow" >');
             if (options.listData.length > 0) {
@@ -119,7 +120,7 @@
                 html.push(me.renderFooter());
             }
             html.push('</div>');
-            me.bodyId = 'fanex-multiselect-options-' + id;
+           
             //add global variable
             me.$multiSelect = me.$multiSelect.after(html.join('')).next('a.fanex-multiselect');
             me.$options = me.$multiSelect.next('div.fanex-multiselect-options');

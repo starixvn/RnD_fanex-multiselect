@@ -256,6 +256,12 @@
                 listData: myGroupData
             });
 
+            $('#reRenderButton').click(function(){
+                    $("#demoMultiselect").fanexMultiSelect({
+                    listData: myGroupData
+                });
+            });
+
             $('#defaultOptionMultiselect').fanexMultiSelect({
                 showHeader: false,
                 showFooter: true,
@@ -335,6 +341,7 @@
                 <td colspan="2" align="center">
                     <select id="demoOneLevel">
                     </select>
+                    <input type="button" id="reRenderButton" value="Re-Render"/>
                 </td>
                 <td>
                     <pre name="code" class="groovy">
