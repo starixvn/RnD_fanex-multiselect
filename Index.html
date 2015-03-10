@@ -262,7 +262,8 @@
                 });
             });
 
-            $('#defaultOptionMultiselect').fanexMultiSelect({
+            var defaultOptionMultiselect = $('#defaultOptionMultiselect');
+            defaultOptionMultiselect.fanexMultiSelect({
                 showHeader: false,
                 showFooter: true,
                 showTooltip: false,
@@ -305,7 +306,7 @@
             });
 
             $('#getCheckedItems').click(function () {
-                alert($('#defaultOptionMultiselect').fanexMultiSelect('getItems', true).join(','));
+                alert(defaultOptionMultiselect.fanexMultiSelect('getItems', true).join(','));
             });
 
             $('#getUnCheckItems').click(function () {
@@ -313,11 +314,11 @@
             });
 
             $('#setCheckAll').click(function () {
-                $('#defaultOptionMultiselect').fanexMultiSelect('setCheckAll', true);
+                defaultOptionMultiselect.fanexMultiSelect('setCheckAll', true);
             });
 
             $('#setUnCheckAll').click(function () {
-                $('#defaultOptionMultiselect').fanexMultiSelect('setCheckAll', false);
+                defaultOptionMultiselect.fanexMultiSelect('setCheckAll', false);
             });
 
             dp.SyntaxHighlighter.HighlightAll('code');

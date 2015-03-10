@@ -16,8 +16,12 @@
             });
         },
         getItems: function (checked) {
-            var $me = $(this),
-                checkedText = checked ? ':checked' : ':not(:checked)',
+            var $me = $(this);
+            if ($me.parent().length === 0) {
+                $me = $('#' + $me.attr('id'));
+            }
+
+            var checkedText = checked ? ':checked' : ':not(:checked)',
                 items = $me.next().find('input[data-is-group=false]' + checkedText),
                 itemLength = items.length,
                 values = [];
@@ -28,8 +32,11 @@
             return values;
         },
         setCheckAll: function (check) {
-            var $me = $(this),
-                $headerCheckbox = $me.next().find("#" + $me.attr('id') + "HeaderCheckBox");
+            var $me = $(this);
+            if ($me.parent().length === 0) {
+                $me = $('#' + $me.attr('id'));
+            }
+            var $headerCheckbox = $me.next().find("#" + $me.attr('id') + "HeaderCheckBox");
             $headerCheckbox.prop('checked', !check).trigger('click');
         }
     };
@@ -53,7 +60,7 @@
         showHeader: true,
         showFooter: false,
         showTooltip: true,
-        showFilter: true,
+        showFilter: false,
         maxHeight: 400, 
         minWidth: 200, 
         checkAllText: 'Check All',
