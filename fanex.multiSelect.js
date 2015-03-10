@@ -276,6 +276,7 @@
         },
         //renderRow: function (tempData, index, hasChild, isLastChild, currentParentGroupId, currentGroupId) {
         renderRow: function (row) {
+            row.data.id = row.data.id || '';
             var me = this,
                 options = me.options,
                 tempHtml = [],
@@ -337,6 +338,7 @@
                 tempHtml.push(options.isCheckAll ? ' checked="checked"' : '');
                 tempHtml.push(row.data.checked ? ' checked="checked"' : '');
                 tempHtml.push(isDisabled ? ' disabled="disabled"' : '');
+                tempHtml.push(row.data.id !== '' ? ' data-item-id="' + row.data.id + '"' : '');
                 tempHtml.push(' />' + title + '</label></div>');
 
                 if (row.hasChild) {
