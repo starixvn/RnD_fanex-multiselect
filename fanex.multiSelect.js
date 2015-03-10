@@ -475,10 +475,10 @@
             me.$headerCheckbox.click(function () {
                     var $this = $(this);
                     if ($this.prop('checked')) {
-                        me.$allCheckBoxInputs.prop('checked', true);
+                        me.$allCheckBoxInputs.filter('.show-item').prop('checked', true);
                     }
                     else {
-                        me.$allCheckBoxInputs.prop('checked', false);
+                        me.$allCheckBoxInputs.filter('.show-item').prop('checked', false);
                     }
                 });
             //build footer link
@@ -537,8 +537,9 @@
                                         grandParent.removeClass('hide-item')
                                             .addClass('show-item').attr('data-dont-hide-me', 'true');
                                         prevParent.find('input').addClass('show-item');
-                                        grandParent = grandParent.parent().parent();
                                         prevParent = grandParent.parent().prev();
+                                        grandParent = grandParent.parent().parent();
+                                        
                                     }
 
                                     dontHideElement
