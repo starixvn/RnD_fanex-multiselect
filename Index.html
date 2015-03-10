@@ -253,12 +253,16 @@
         $(document).ready(function () {
             var groupData = GroupData('1');
             $("#demoMultiselect").fanexMultiSelect({
-                listData: myGroupData
+                listData: myGroupData,
+                showFilter: true,
+                minWidth: 270
             });
 
             $('#reRenderButton').click(function(){
                     $("#demoMultiselect").fanexMultiSelect({
-                    listData: myGroupData
+                        listData: myGroupData,
+                        showFilter: true,
+                        minWidth: 270
                 });
             });
 

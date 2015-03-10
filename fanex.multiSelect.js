@@ -77,6 +77,7 @@
         multiple: true,
         isCheckAll: false,
         filterPaddingRight: 13,
+        filterPlaceHolder: 'Enter keywords',
         isRetrieveDataAfterClose: false,
         listData: [],
         useCustomCheckAllText: false,
@@ -215,7 +216,8 @@
             if (options.showFilter) {
                 html.push('<div class="fanex-multiselect-filter">');
                 html.push('<lable for="fanex-multiselect-filter-input"><span class="filter-text">Filter:</span>');
-                html.push('<input type="textbox" id="fanex-multiselect-filter-input" /></label>');
+                html.push('<input type="textbox" id="fanex-multiselect-filter-input" placeholder="'
+                    + options.filterPlaceHolder + '"/></label>');
                 html.push('<span class="delete-button" id="filter-delete-button"></span>');
                 html.push('</div>');
 
@@ -279,14 +281,16 @@
                 tempHtml = [],
                 title = row.data.text || '',
                 value = row.data.value || '',
-                inputId = row.data.id || 'fanex-multiselect-' + me.id + '-option-' + row.index,
+                inputId = 'fanex-multiselect-' + me.id + '-' + row.data.id + '-option-' + row.groupId,
                 isDisabled = !row.data.enable,
                 labelClasses = row.data.cssClass || '',
                 liClasses = 'rtLI show-item ',
                 divClasses = 'fanex-multiselect-div ',
                 groupIdAttr = 'fanex-multiselect-option-group-' + row.groupId;
 
+            
             row.hasChild = row.hasChild || false;
+
             if (value) {
                 liClasses += (isDisabled ? ' fanex-multiselect-disabled ' : '')
                     + (row.isLastChild ? ' rtLast' : '')
@@ -335,7 +339,7 @@
                 tempHtml.push(isDisabled ? ' disabled="disabled"' : '');
                 tempHtml.push(' />' + title + '</label></div>');
 
-                if (row.data.items && row.data.items.length > 0) {
+                if (row.hasChild) {
                     tempHtml.push('<ul class="fanex-multiselect-ul-group custom-multi-select-rtUL" childgroupid="' + groupIdAttr + '">');
                     var currentChildLength = row.data.items.length;
                     for (var j = 0; j < currentChildLength; j++) {
@@ -372,9 +376,10 @@
                 iconWidth = me.$multiSelect.find('span.fanex-multiselect-icon').width(),
                 inputWidth = me.options.minWidth - iconWidth + 3;
             // set widths
-            me.$multiSelect.width(me.options.minWidth).find('input').width(inputWidth);
+            me.$multiSelect.css('width', me.options.minWidth + 'px')
+                .find('input').css('width', inputWidth + 'px');
             if (me.options.showFilter) {
-                me.$filterInput.width(me.options.minWidth - 47 - me.options.filterPaddingRight);
+                me.$filterInput.css('width', me.options.minWidth - 50 + 'px');
             }
         },
         updateCheckall: function () {
@@ -505,18 +510,24 @@
                         var filterVal = $this.val().toLowerCase();
                         if (filterVal !== '') {
                             me.$listItem
-                                .find('li').removeAttr('data-dont-hide-me').removeClass('show-item')
+                                .find('li').removeAttr('data-dont-hide-me')
+                                .removeClass('show-item')
+                                .find('div').removeClass('high-light-item')
                                 .find('input').removeClass('show-item');
+
                             var dontHideElements = me.$listItem.find('li[data-content-text*="' + filterVal + '"]')
                                 .removeClass('hide-item')
                                 .addClass('show-item')
                                 .attr('data-dont-hide-me', 'true');
+                            
                             dontHideElements.find('input').addClass('show-item');
                             if (dontHideElements.length > 0) {
                                 me.$noDataText.hide();
                                 me.$header.show();
                                 dontHideElements.each(function () {
                                     var dontHideElement = $(this);
+                                    dontHideElement.children().first().addClass('high-light-item');
+
                                     var prevParent = dontHideElement.parent().prev();
                                     var grandParent = dontHideElement.parent().parent();
                                     
@@ -545,7 +556,10 @@
                         else {
                             me.$noDataText.hide();
                             me.$header.show();
-                            me.$listItem.find('li').removeAttr('data-dont-hide-me').removeClass('hide-item').addClass('show-item')
+                            me.$listItem.find('li').removeAttr('data-dont-hide-me')
+                                .removeClass('hide-item')
+                                .addClass('show-item')
+                                .find('div').removeClass('high-light-item')
                                 .find('input').addClass('show-item');
                         }
 

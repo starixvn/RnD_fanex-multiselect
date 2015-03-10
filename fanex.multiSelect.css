@@ -122,17 +122,17 @@ important
     background-position: -22px -169px;
 }
 
-.fanex-multiselect-icon-collapse:hover {
-    background-position: -22px -186px;
-}
+    .fanex-multiselect-icon-collapse:hover {
+        background-position: -22px -186px;
+    }
 
 .fanex-multiselect-icon-expand {
     background-position: 0 -169px;
 }
 
-.fanex-multiselect-icon-expand:hover {
-    background-position: 0 -186px;
-}
+    .fanex-multiselect-icon-expand:hover {
+        background-position: 0 -186px;
+    }
 
 .fanex-multiselect-update-result {
     width: 30px;
@@ -384,7 +384,7 @@ Rad tree view css
         }
 
     .fanex-multiselect-treeview .rtLines .rtLast, .fanex-multiselect-treeview .rtLines .rtLast .rtUL {
-        background: none repeat scroll 0 0 transparent;
+        /*background: none repeat scroll 0 0 transparent;*/
     }
 
     .fanex-multiselect-treeview .rtLines .rtTop, .fanex-multiselect-treeview .rtLines .rtMid, .fanex-multiselect-treeview .rtLines .rtBot {
@@ -422,7 +422,7 @@ Rad tree view css
     }
 
     .fanex-multiselect-treeview .rtLines .rtLast, .fanex-multiselect-treeview .rtLines .rtLast .rtUL {
-        background-image: none;
+        /*background-image: none;*/
     }
 
     .fanex-multiselect-treeview .rtLines .rtTop {
@@ -457,6 +457,10 @@ Rad tree view css
     margin: 3px;
 }
 
+.fanex-multiselect-options .high-light-item {
+    background-color: #abd7f8;
+}
+
 
 .fanex-multiselect-widget input[type='text'] {
     text-align: left !important;
@@ -472,14 +476,18 @@ Rad tree view css
 
 .fanex-multiselect-filter {
     position: relative;
+    margin-bottom: 3px;
 }
 
     .fanex-multiselect-filter .filter-text {
-        font-weight: bold;
+        color: #000;
+        display: inline-block;
+        width: 37px;
+        text-align: center;
     }
 
     .fanex-multiselect-filter input {
-        padding-right: 13px;
+        margin: 3px 1px;
     }
 
     .fanex-multiselect-filter .delete-button {
@@ -489,10 +497,10 @@ Rad tree view css
         background-image: url(images/sprites.png);
         background-position: -79px -38px;
         position: absolute;
-        right: 4px;
+        right: 5px;
         top: 7px;
     }
 
-    .fanex-multiselect-filter .delete-button:hover {
-        background-position: -79px -26px;
-    }
+        .fanex-multiselect-filter .delete-button:hover {
+            background-position: -79px -26px;
+        }
