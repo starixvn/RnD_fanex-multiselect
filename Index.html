@@ -254,15 +254,13 @@
             var groupData = GroupData('1');
             $("#demoMultiselect").fanexMultiSelect({
                 listData: myGroupData,
-                showFilter: true,
-                minWidth: 270
+                showFilter: true
             });
 
             $('#reRenderButton').click(function(){
                     $("#demoMultiselect").fanexMultiSelect({
                         listData: myGroupData,
-                        showFilter: true,
-                        minWidth: 270
+                        showFilter: true
                 });
             });
 
@@ -364,7 +362,8 @@
                 <td>
                     <pre name="code" class="groovy">
                         $("#demoMultiselect").fanexMultiSelect({
-                            listData: myGroupData
+                            listData: myGroupData,
+							showFilter: true
                         });
                 </pre>
                 </td>

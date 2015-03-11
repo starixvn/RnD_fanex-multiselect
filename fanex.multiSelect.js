@@ -791,12 +791,12 @@
                 //handle group checkbox click event
                 $this.prev().children().not('span.collapseClass').find('input').click(function () {
                     if ($(this).prop('checked')) {
-                        $(this).parent().parent().next().find('li.show-item input:not(:disabled)').prop('checked', true);
+                        $(this).parent().parent().next().find('li.show-item input.show-item:not(:disabled)').prop('checked', true);
                         me.updateParentSelected($this);
                         me.updateCheckall();
                     }
                     else {
-                        $(this).parent().parent().next().find('li.show-item input:not(:disabled)').prop('checked', false);
+                        $(this).parent().parent().next().find('li.show-item input.show-item:not(:disabled)').prop('checked', false);
                         me.$headerCheckbox.prop('checked', false);
                     }
                     options.onCheck.call(this);
